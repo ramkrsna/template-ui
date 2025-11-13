@@ -203,6 +203,56 @@ podman run -p 8080:8080 --env-file .env template-ui
    npm start
    ```
 
+## 🔄 Fork Sync (Upstream)
+
+This repository is a fork of [redhat-data-and-ai/template-ui](https://github.com/redhat-data-and-ai/template-ui). To keep your fork synchronized with the upstream repository:
+
+### Initial Setup (One-time)
+```bash
+# Add upstream remote (if not already added)
+git remote add upstream https://github.com/redhat-data-and-ai/template-ui.git
+
+# Verify remotes
+git remote -v
+```
+
+### Manual Sync
+```bash
+# Fetch upstream changes
+git fetch upstream
+
+# Switch to main branch
+git checkout main
+
+# Merge upstream changes
+git merge upstream/main
+
+# Push to your fork
+git push origin main
+```
+
+### Automated Sync
+Use the provided sync script for automated upstream synchronization:
+
+```bash
+# Run the sync script
+./sync-upstream.sh
+```
+
+The script will:
+- Automatically stash any uncommitted changes
+- Fetch the latest changes from upstream
+- Merge upstream/main into your local main branch
+- Push the updated main branch to your fork
+- Optionally merge main into your current working branch
+- Restore any stashed changes
+
+### Sync Frequency
+It's recommended to sync with upstream:
+- Before starting new feature development
+- Weekly for active development
+- Before creating pull requests
+
 ### Common Issues
 
 **Port already in use**
